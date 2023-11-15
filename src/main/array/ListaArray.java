@@ -24,7 +24,10 @@ public class ListaArray implements EstruturaElementar{
 
     @Override
     public int buscaIndice(int valor) {
-       return;
+       if(valor >= indice_fim){
+        return -1;
+       }
+       return array[valor];
     }
 
     @Override
@@ -47,8 +50,8 @@ public class ListaArray implements EstruturaElementar{
             return -1;
         }
         int maximo = array[0];
-        for(int i = 0; i > indice_fim; i++){
-            if(array[i] < maximo){
+        for(int i = 0; i < indice_fim; i++){
+            if(array[i] > maximo){
                 maximo = array[i];
             }
         }
@@ -140,15 +143,21 @@ public class ListaArray implements EstruturaElementar{
 
     @Override
     public void removeInicio() {
+        if(indice_fim == 0){
+            return;
+        }
+        for(int i = 0; i < indice_fim; i++){
+            array[i] = array [i+1];
+        }
+        indice_fim--;
 
-  
-       
     }
 
     @Override
     public void removeFim() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFim'");
+        if(indice_fim > 0){
+            indice_fim -= 1;
+        }
     }
     
 }
